@@ -32,6 +32,9 @@ footer{background:#071f0c;color:#fff;padding:30px 20px;text-align:center}
 <!-- Cloudflare Web Analytics -->
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-token='5a4d78bc63df46fda43c56b753b7c20e'></script>
 <!-- End Cloudflare Web Analytics -->
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#0a5c36">
+<link rel="apple-touch-icon" href="/icon.jpeg">
 </head>
 <body>
 <div class="topbar"><span>📍 Niger Delta • Nigeria</span><span>✉️ i234 702 651 0390</span></div>
@@ -84,5 +87,10 @@ footer{background:#071f0c;color:#fff;padding:30px 20px;text-align:center}
 </section>
 
 <footer>© 2026 RPIND • Riverine Peace Initiative in Niger Delta<br><small>Built by Pepblis Enterprises • pepblis.netlify.app | Page 1 of 10 - Home</small></footer>
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js');
+}
+</script>
 </body>
 </html>
