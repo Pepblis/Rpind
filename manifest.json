@@ -1,0 +1,16 @@
+{
+  "name": "RPIND - Rivers Peace Initiative for National Development",
+  "short_name": "RPIND",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a5c36",
+  "theme_color": "#0a5c36",
+  "icons": [
+    {
+      "src": "icon.jpeg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ]
+}
