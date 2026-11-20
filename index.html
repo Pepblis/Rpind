@@ -54,6 +54,14 @@ footer{background:#071f0c;color:#fff;padding:30px 20px;text-align:center}
 <a href="contact.html" class="btn btn-green">Partner With Us</a>
 <p style="margin-top:18px;font-size:13px">Trusted in mediation • Featured on Channels TV, Vanguard, Independent & Punch</p>
 </section>
+<!-- INSTALL APP BUTTON -->
+<div style="text-align:center; margin: 20px 0; background:#e8f5ee; padding:20px; border-radius:12px;">
+  <p style="font-weight:bold; font-size:17px; margin-bottom:10px;">Get RPIND App For Your Phone 📲</p>
+  <button id="installBtn" style="background:#0a5c36; color:white; border:none; padding:14px 28px; font-size:17px; font-weight:bold; border-radius:30px;">
+    📲 Download RPIND App
+  </button>
+  <p id="installMsg" style="font-size:13px; color:#555; margin-top:8px;"></p>
+</div>
 
 <section class="section">
 <h2>Who We Are</h2>
@@ -90,6 +98,36 @@ footer{background:#071f0c;color:#fff;padding:30px 20px;text-align:center}
 <script>
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/sw.js');
+}
+</script>
+<script>
+let deferredPrompt;
+const installBtn = document.getElementById('installBtn');
+const installMsg = document.getElementById('installMsg');
+
+if(installBtn) installBtn.style.display = 'none';
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  if(installBtn) installBtn.style.display = 'inline-block';
+  if(installMsg) installMsg.textContent = 'Install am make e dey your phone like WhatsApp!';
+});
+
+if(installBtn) {
+  installBtn.addEventListener('click', async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      if (outcome === 'accepted') {
+        if(installMsg) installMsg.textContent = 'Thank you! RPIND don install! 🎉';
+      }
+      deferredPrompt = null;
+      installBtn.style.display = 'none';
+    } else {
+      if(installMsg) installMsg.textContent = 'For iPhone: Press Share button → Add to Home Screen. For Android: Press 3 dots → Install app.';
+    }
+  });
 }
 </script>
 </body>
